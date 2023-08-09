@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Show and Hide div elements using radio buttons</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300&family=Poppins:wght@100;300&family=Roboto:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <style type="text/css">
+      #metricMainDiv {
+        display: none;
+      }
+
+      #imperialMainDiv {
+        display: none;
+      }
+
+      #mixedMainDiv {
+        display: none;
+      }
+
+      #metricYesSkeinLengthDiv {
+        display: none;
+      }
+
+      #metricNoSkeinLengthDiv {
+        display: none;
+      }
+
+      #resultMetricYesMetresPerKiloDiv {
+        display: none;
+      }
+
+      #resultMetricYesMetresPer100gDiv {
+        display: none;
+      }
+
+      #resultMetricNoMetresPerKiloDiv {
+        display: none;
+      }
+
+      #resultMetricNoMetresPer100gDiv {
+        display: none;
+      }
+
+      #resultMetricNoTotalSkeinLengthDiv {
+        display: none;
+      }
+
+      #imperialYesSkeinLengthDiv {
+        display: none;
+      }
+
+      #resultImperialYesYardsPerPoundDiv {
+        display: none;
+      }
+
+      #resultImperialYesYardsPerOunceDiv {
+        display: none;
+      }
+
+      #imperialNoSkeinLengthInchesDiv {
+        display: none;
+      }
+
+      #resultImperialNoTotalSkeinLengthDiv {
+        display: none;
+      }
+
+      #resultImperialNoYardsPerPoundDiv {
+        display: none;
+      }
+
+      #resultImperialNoYardsPerOunceDiv {
+        display: none;
+      }
+
+      #mixedYesSkeinLengthDiv {
+        display: none;
+      }
+
+      #resultMixedYesYardsPerPoundDiv {
+        display: none;
+      }
+
+      #resultMixedYesYardsPerOunceDiv {
+        display: none;
+      }
+
+      #MixedNoSkeinLengthInchesDiv {
+        display: none;
+      }
+
+      #resultMixedNoTotalSkeinLengthDiv {
+        display: none;
+      }
+
+      #resultMixedNoYardsPerPoundDiv {
+        display: none;
+      }
+
+      #resultMixedNoYardsPerOunceDiv {
+        display: none;
+      }
+
+      #resultMixedYesYardsPerGramsDiv {
+        display: none;
+      }
+
+
+
+
+
+
+      /* Chrome, Safari, Edge, Opera */
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      /* Firefox */
+      input[type="number"] {
+        -moz-appearance: textfield;
+        appearance: textfield;
+      }
+
+      #container {
+        background-color: lightgray;
+        font-family: "Roboto", sans-serif;
+        font-weight: 300;
+        width: 90%;
+        padding: 10px;
+      }
+
+      #input {
+        padding: 10px;
+      }
+
+      input[type="number"] {
+        border-radius: 4px;
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+      }
+
+      button,
+      input[type="button"] {
+        background-color: #346d79; /* button colour */
+        border: 2px;
+        border-radius: 6px;
+        color: white;
+        padding: 10px 20px;
+        margin: 15px 15px 15px 12px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+      }
+      h3 {
+        display: block;
+        font-size: 1.17em;
+        margin-top: 1em;
+        margin-bottom: 0;
+        margin-left: 0;
+        margin-right: 0;
+      }
+
+      td {
+        text-align: center;
+      }
+
+      table {
+        padding: 5%;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <div id="container">
+      <!--Metric or Imperial?-->
+      
+          <h3>
+            Which units are your measurements in?
+          </h3>
+          <p></p>
+        <!--Metric starts here-->
+       <div id="table">
+        <table width = 70%>
+        <tr>
+          <td width="33%" type="flex">
+            <button id="metric" type="button" onclick="metricFunction()">
+              Metric
+            </button>
+          </td>
+          <td width="33%">
+            <button id="imperial" type="button" onclick="imperialFunction()">
+              Imperial
+            </button>
+          </td>
+          <td width="33%">
+            <button id="mixed" type="button" onclick="mixedFunction()">Mixed</button>
+          </button> 
+          </td>
+        </tr>
+        <tr>
+          <td>cm/m <br>and grams</td><td>inches/yds <br>and ounces</td><td>inches/yds <br>and grams</td>
+        </tr>
+        </table>
+      </div>
+
+      <!--Metric — Do you know total skein length?-->
+      <div id="metricMainDiv">
+        <h3>Do you already know the total skein length in metres?</h3>
+        <div>
+          <button
+            id="metricYesSkeinLengthButton"
+            type="button"
+            onclick="metricYesSkeinLengthButtonFunction()"
+          >
+            Yes
+          </button>
+          <button
+            id="metricNoSkeinLengthButton"
+            type="button"
+            onclick="metricNoSkeinLengthButtonFunction()"
+          >
+            No
+          </button>
+        </div>
+      
+      <!--Metric — Yes to skein length question-->
+      <div id="metricYesSkeinLengthDiv">
+        <div id="input">
+          <label for="totalSkeinLengthM">Total Skein Length (metres):</label
+          ><br />
+          <input
+            type="number"
+            id="totalSkeinLengthM"
+            onfocus="this.value=''"
+            value="0"
+          /><br />
+        </div>
+
+        <div id="input">
+          <label for="yesWeightG">Weight of Skein (grams):</label><br />
+          <input
+            type="number"
+            id="yesWeightG"
+            onfocus="this.value=''"
+            value="0"
+          /><br />
+        </div>
+
+        <div id="button">
+          <input
+            type="button"
+            value="Calculate"
+            onclick="resultMetricYesMetresPer100gDiv(); resultMetricYesMetresPerKiloDiv(); calculateMetricYes(); calculateMetricYes100()"
+          />
+          <input type="button" value="Reset" onclick="metricYesReset()" />
+        </div>
+
+        <div id="resultMetricYesMetresPerKiloDiv">
+          <div id="input">
+            <label for="resultMetricYesMetresPerKilo">Grist:</label><br />
+            <output
+              type="number"
+              id="resultMetricYesMetresPerKilo"
+              onfocus="this.value=''"
+              value="0"
+              disabled
+            ></output>
+            metres per kilogram<br />
+          </div>
+        </div>
+
+        <div id="resultMetricYesMetresPer100gDiv">
+          <div id="input">
+            <label for="resultMetricYesMetresPer100g">Grist:</label><br />
+            <output
+              type="number"
+              id="resultMetricYesMetresPer100g"
+              onfocus="this.value=''"
+              value="0"
+              disabled
+            ></output>
+            metres per 100 grams<br />
+          </div>
+        </div>
+      </div>
+      <!--Metric Don't know total skein length-->
+      <div id="metricNoSkeinLengthDiv">
+        <div id="input">
+          <label>Skein Length (cm):</label><br />
+          <input
+            type="number"
+            id="metricNoSkeinLengthCm"
+            onfocus="this.value=''"
+            value="0"
+          />
+        </div>
+
+        <div id="input">
+          <label for="metricNoNumberWraps">Number of Niddy Noddy Wraps:</label
+          ><br />
+          <input
+            type="number"
+            id="metricNoNumberWraps"
+            onfocus="this.value=''"
+            value="0"
+          /><br />
+        </div>
+
+        <div id="input">
+          <label for="metricNoWeightG">Weight of Skein (grams):</label><br />
+          <input
+            type="number"
+            id="metricNoWeightG"
+            onfocus="this.value=''"
+            value="0"
+          /><br />
+        </div>
+
+        <div id="button">
+          <input
+            type="button"
+            value="Calculate"
+            onclick="calculateMetricNo(); calculateMetricNo100(); calculateMetricNoTotalSkeinLength()"
+          />
+          <input type="button" value="Reset" onclick="metricNoReset()" />
+        </div>
+        <!--Metric total skein length-->
+        <div id="resultMetricNoTotalSkeinLengthDiv">
+          <div id="input">
+            <label for="resultMetricNoTotalSkeinLength"
+              >Total Skein Length:</label
+            ><br />
+            <output
+              type="number"
+              id="resultMetricNoTotalSkeinLength"
+              onfocus="this.value=''"
+              value="0"
+              disabled
+            ></output>
+            metres<br />
+          </div>
+        </div>
+
+        <div id="resultMetricNoMetresPerKiloDiv">
+          <div id="input">
+            <label for="resultMetricNoMetresPerKilo">Grist:</label><br />
+            <output
+              type="number"
+              id="resultMetricNoMetresPerKilo"
+              onfocus="this.value=''"
+              value="0"
+              disabled
+            ></output>
+            metres per kilogram<br />
+          </div>
+        </div>
+
+        <div id="resultMetricNoMetresPer100gDiv">
+          <div id="input">
+            <label for="resultMetricNoMetresPer100g">Grist:</label><br />
+            <output
+              type="number"
+              id="resultMetricNoMetresPer100g"
+              onfocus="this.value=''"
+              value="0"
+              disabled
+            ></output>
+            metres per 100 grams<br />
+          </div>
+        </div>
+      </div>
+      </div>
+
+      <!--Imperial starts here-->
+      <!--Imperial — Do you know total skein length?-->
+      <div id="imperialMainDiv">
+        <h3>Do you already know the total skein length in yards?</h3>
+        <div>
+          <button
+            id="imperialYesSkeinLengthButton"
+            type="button"
+            onclick="imperialYesSkeinLengthButtonFunction()"
+          >
+            Yes
+          </button>
+          <button
+            id="imperialNoSkeinLengthButton"
+            type="button"
+            onclick="imperialNoSkeinLengthButtonFunction()"
+          >
+            No
+          </button>
+        </div>
+      
+
+      <!--Imperial Yes Skein Length-->
+      <div id="imperialYesSkeinLengthDiv">
+        <div id="input">
+          <label for="totalSkeinLengthYards">Total Skein Length (yards):</label
+          ><br />
+          <input
+            type="number"
+            id="totalSkeinLengthYards"
+            onfocus="this.value=''"
+            value="0"
+          /><br />
+        </div>
+
+        <div id="input">
+          <label for="yesWeightOunces">Weight of Skein (ounces):</label><br />
+          <input
+            type="number"
+            id="yesWeightOunces"
+            onfocus="this.value=''"
+            value="0"
+          /><br />
+        </div>
+
+        <div id="button">
+          <input
+            type="button"
+            value="Calculate"
+            onclick="resultImperialYesYardsPerOunceDiv(); resultImperialYesYardsPerPoundDiv(); calculateImperialYes(); calculateImperialYesOunces()"
+          />
+          <input type="button" value="Reset" onclick="imperialYesReset()" />
+        </div>
+
+        <div id="resultImperialYesYardsPerPoundDiv">
+          <div id="input">
+            <label for="resultImperialYesYardsPerPound">Grist:</label><br />
+            <output
+              type="number"
+              id="resultImperialYesYardsPerPound"
+              onfocus="this.value=''"
+              value="0"
+              disabled
+            ></output>
+            yards per pound<br />
+          </div>
+        </div>
+
+        <div id="resultImperialYesYardsPerOunceDiv">
+          <div id="input">
+            <label for="resultImperialYesYardsPerOunce">Grist:</label><br />
+            <output
+              type="number"
+              id="resultImperialYesYardsPerOunce"
+              onfocus="this.value=''"
+              value="0"
+              disabled
+            ></output>
+            yards per ounce<br />
+          </div>
+        </div>
+      </div>
+      <!--Imperial Don't know total skein length-->
+      <div id="imperialNoSkeinLengthInchesDiv">
+        <div id="input">
+          <label>Skein Length (Inches):</label><br />
+          <input
+            type="number"
+            id="imperialNoSkeinLengthInches"
+            onfocus="this.value=''"
+            value="0"
+          />
+        </div>
+
+        <div id="input">
+          <label for="imperialNoNumberWraps">Number of Niddy Noddy Wraps:</label
+          ><br />
+          <input
+            type="number"
+            id="imperialNoNumberWraps"
+            onfocus="this.value=''"
+            value="0"
+          /><br />
+        </div>
+
+        <div id="input">
+          <label for="imperialNoWeightOunces">Weight of Skein (ounces):</label
+          ><br />
+          <input
+            type="number"
+            id="imperialNoWeightOunces"
+            onfocus="this.value=''"
+            value="0"
+          /><br />
+        </div>
+
+        <div id="button">
+          <input
+            type="button"
+            value="Calculate"
+            onclick="calculateImperialNo(); calculateImperialNoYardsPerOunce(); calculateImperialNoTotalSkeinLength()"
+          />
+          <input type="button" value="Reset" onclick="imperialNoReset()" />
+        </div>
+        <!--Imperial total skein length result-->
+        <div id="resultImperialNoTotalSkeinLengthDiv">
+          <div id="input">
+            <label for="resultImperialNoTotalSkeinLength"
+              >Total Skein Length:</label
+            ><br />
+            <output
+              type="number"
+              id="resultImperialNoTotalSkeinLength"
+              onfocus="this.value=''"
+              value="0"
+              disabled
+            ></output>
+            yards<br />
+          </div>
+        </div>
+
+        <div id="resultImperialNoYardsPerPoundDiv">
+          <div id="input">
+            <label for="resultImperialNoYardPerPound">Grist:</label><br />
+            <output
+              type="number"
+              id="resultImperialNoYardsPerPound"
+              onfocus="this.value=''"
+              value="0"
+              disabled
+            ></output>
+            yards per pound<br />
+          </div>
+        </div>
+
+        <div id="resultImperialNoYardsPerOunceDiv">
+          <div id="input">
+            <label for="resultImperialNoYardsPerOunce">Grist:</label><br />
+            <output
+              type="number"
+              id="resultImperialNoYardsPerOunce"
+              onfocus="this.value=''"
+              value="0"
+              disabled
+            ></output>
+            yards per ounce<br />
+          </div>
+        </div>
+      </div>
+      </div>
+<!--Mixed starts here-->
+      <!--Imperial — Do you know total skein length?-->
+      <div id="mixedMainDiv">
+        <h3>Do you already know the total skein length in yards?</h3>
+        <div>
+          <button
+            id="mixedYesSkeinLengthButton"
+            type="button"
+            onclick="mixedYesSkeinLengthButtonFunction()"
+          >
+            Yes
+          </button>
+          <button
+            id="mixedNoSkeinLengthButton"
+            type="button"
+            onclick="mixedNoSkeinLengthButtonFunction()"
+          >
+            No
+          </button>
+        </div>
+      
+
+      <!--Mixed Yes Skein Length-->
+      <div id="mixedYesSkeinLengthDiv">
+        <div id="input">
+          <label for="mixedTotalSkeinLengthYards">Total Skein Length (yards):</label
+          ><br />
+          <input
+            type="number"
+            id="mixedTotalSkeinLengthYards"
+            onfocus="this.value=''"
+            value="0"
+          /><br />
+        </div>
+
+        <div id="input">
+          <label for="mixedYesWeightGrams">Weight of Skein (Grams):</label><br />
+          <input
+            type="number"
+            id="mixedYesWeightGrams"
+            onfocus="this.value=''"
+            value="0"
+          /><br />
+        </div>
+
+        <div id="button">
+          <input
+            type="button"
+            value="Calculate"
+            onclick="calculateMixedYes(); calculateMixedYesGrams(); calculateMixedYesYardsPerOunce(); resultMixedYesYardsPerOunceDiv(); resultMixedYesYardsPerPoundDiv(); resultMixedYesYardsPerGramsDiv(); "
+          />
+          <input type="button" value="Reset" onclick="mixedYesReset()" />
+        </div>
+
+        <div id="resultMixedYesYardsPerPoundDiv">
+          <div id="input">
+            <label for="resultMixedYesYardsPerPound">Grist:</label><br />
+            <output
+              type="number"
+              id="resultMixedYesYardsPerPound"
+              onfocus="this.value=''"
+              value="0"
+              disabled
+            ></output>
+            yards per pound<br />
+          </div>
+        </div>
+
+        <div id="resultMixedYesYardsPerOunceDiv">
+          <div id="input">
+            <label for="resultMixedYesYardsPerOunce">Grist:</label><br />
+            <output
+              type="number"
+              id="resultMixedYesYardsPerOunce"
+              onfocus="this.value=''"
+              value="0"
+              disabled
+            ></output>
+            yards per ounce<br />
+          </div>
+        </div>
+
+        <div id="resultMixedYesYardsPerGramsDiv">
+          <div id="input">
+            <label for="resultMixedYesYardsPerGrams">Grist:</label><br />
+            <output
+              type="number"
+              id="resultMixedYesYardsPerGrams"
+              onfocus="this.value=''"
+              value="0"
+              disabled
+            ></output> yards per 100g
+          </div>
+        </div>
+      </div>
+      <!--*********************************
+        THIS IS WHERE THE PROBLEM IS! Mixed Don't know total skein length. Everything above this was fine-->
+      <div id="mixedNoSkeinLengthDiv">
+        <div id="input">
+          <label>Skein Length (Inches):</label><br />
+          <input
+            type="number"
+            id="mixedNoSkeinLengthInches"
+            onfocus="this.value=''"
+            value="0"
+          />
+        </div>
+
+        <div id="input">
+          <label for="mixedNoNumberWraps">Number of Niddy Noddy Wraps:</label
+          ><br />
+          <input
+            type="number"
+            id="mixedNoNumberWraps"
+            onfocus="this.value=''"
+            value="0"
+          /><br />
+        </div>
+
+        <div id="input">
+          <label for="mixedNoWeightGrams">Weight of Skein (Grams):</label
+          ><br />
+          <input
+            type="number"
+            id="mixedNoWeightGrams"
+            onfocus="this.value=''"
+            value="0"
+          /><br />
+        </div>
+
+        <div id="button">
+          <input
+            type="button"
+            value="Calculate"
+            onclick="calculateMixedNo(); calculateMixedNoYardsPerOunce(); calculateMixedNoTotalSkeinLength()"
+          />
+          <input type="button" value="Reset" onclick="mixedNoReset()" />
+        </div>
+        <!--Mixed total skein length result-->
+        <div id="resultMixedNoTotalSkeinLengthDiv">
+          <div id="input">
+            <label for="resultMixedNoTotalSkeinLength"
+              >Total Skein Length:</label
+            ><br />
+            <output
+              type="number"
+              id="resultMixedNoTotalSkeinLength"
+              onfocus="this.value=''"
+              value="0"
+              disabled
+            ></output>
+            yards<br />
+          </div>
+        </div>
+
+        <div id="resultMixedNoYardsPerPoundDiv">
+          <div id="input">
+            <label for="resultMixedNoYardPerPound">Grist:</label><br />
+            <output
+              type="number"
+              id="resultMixedNoYardsPerPound"
+              onfocus="this.value=''"
+              value="0"
+              disabled
+            ></output>
+            yards per pound<br />
+          </div>
+        </div>
+
+        <div id="resultMixedNoYardsPerOunceDiv">
+          <div id="input">
+            <label for="resultMixedNoYardsPerOunce">Grist:</label><br />
+            <output
+              type="number"
+              id="resultMixedNoYardsPerOunce"
+              onfocus="this.value=''"
+              value="0"
+              disabled
+            ></output>
+            yards per ounce<br />
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+      
+    
+
+
+    <script type="text/javascript">
+      //Metric functions
+
+      //Metric button functions
+      function metricFunction() {
+        document.getElementById("metricMainDiv").style.display = "block";
+        document.getElementById("imperialMainDiv").style.display = "none";
+        document.getElementById("mixedMainDiv").style.display = "none";
+        document.getElementById("metric").style.border = "2px inset #969DB0";
+        document.getElementById("imperial").style.border ="none";
+        document.getElementById("mixed").style.border ="none";
+      }
+
+      function metricYesSkeinLengthButtonFunction() {
+        document.getElementById("metricYesSkeinLengthDiv").style.display =
+          "block";
+        document.getElementById("metricNoSkeinLengthDiv").style.display =
+          "none";
+          document.getElementById("metricYesSkeinLengthButton").style.border = "2px inset #969DB0";
+        document.getElementById("metricNoSkeinLengthButton").style.border ="none";
+      }
+
+      function metricNoSkeinLengthButtonFunction() {
+        document.getElementById("metricNoSkeinLengthDiv").style.display =
+          "block";
+        document.getElementById("metricYesSkeinLengthDiv").style.display =
+          "none";
+          document.getElementById("metricNoSkeinLengthButton").style.border = "2px inset #969DB0";
+        document.getElementById("metricYesSkeinLengthButton").style.border ="none";
+      }
+
+      function resultMetricYesMetresPerKiloDiv() {
+        document.getElementById(
+          "resultMetricYesMetresPerKiloDiv"
+        ).style.display = "block";
+      }
+
+      function resultMetricYesMetresPer100gDiv() {
+        document.getElementById(
+          "resultMetricYesMetresPer100gDiv"
+        ).style.display = "block";
+      }
+
+      function metricYesReset() {
+        document.getElementById("totalSkeinLengthM").value = "0";
+        document.getElementById("yesWeightG").value = "0";
+        document.getElementById("resultMetricYesMetresPerKilo").value = "0";
+        document.getElementById("resultMetricYesMetresPer100g").value = "0";
+        document.getElementById(
+          "resultMetricYesMetresPer100gDiv"
+        ).style.display = "none";
+        document.getElementById(
+          "resultMetricYesMetresPerKiloDiv"
+        ).style.display = "none";
+      }
+
+      function metricNoReset() {
+        document.getElementById("metricNoSkeinLengthCm").value = "0";
+        document.getElementById("metricNoNumberWraps").value = "0";
+        document.getElementById("metricNoWeightG").value = "0";
+        document.getElementById("resultMetricNoMetresPerKilo").value = "0";
+        document.getElementById("resultMetricNoMetresPer100g").value = "0";
+        document.getElementById(
+          "resultMetricNoMetresPer100gDiv"
+        ).style.display = "none";
+        document.getElementById(
+          "resultMetricNoMetresPerKiloDiv"
+        ).style.display = "none";
+        document.getElementById(
+          "resultMetricNoTotalSkeinLengthDiv"
+        ).style.display = "none";
+      }
+
+      function calculateMetricYes() {
+        var num1MetricYes = Number(
+          document.getElementById("totalSkeinLengthM").value
+        );
+        var num2MetricYes = Number(document.getElementById("yesWeightG").value);
+        var sumMetricYes = (num1MetricYes / num2MetricYes) * 100 * 100;
+        document.getElementById("resultMetricYesMetresPerKilo").value =
+          Math.round(sumMetricYes);
+      }
+
+      function calculateMetricYes100() {
+        var num1MetricYesPer100g = Number(
+          document.getElementById("totalSkeinLengthM").value
+        );
+        var num2MetricYesPer100g = Number(
+          document.getElementById("yesWeightG").value
+        );
+        var sumMetricYesPer100g =
+          (num1MetricYesPer100g / num2MetricYesPer100g) * 100;
+        document.getElementById("resultMetricYesMetresPer100g").value =
+          Math.round(sumMetricYesPer100g);
+      }
+
+      function calculateMetricNoTotalSkeinLength() {
+        var num1 = Number(
+          document.getElementById("metricNoSkeinLengthCm").value
+        );
+        var num2 = Number(document.getElementById("metricNoNumberWraps").value);
+        var sum = (num1 * num2) / 100;
+        document.getElementById("resultMetricNoTotalSkeinLength").value =
+          Math.round(sum);
+        document.getElementById(
+          "resultMetricNoTotalSkeinLengthDiv"
+        ).style.display = "block";
+      }
+
+      function calculateMetricNo() {
+        var num1 = Number(
+          document.getElementById("metricNoSkeinLengthCm").value
+        );
+        var num2 = Number(document.getElementById("metricNoNumberWraps").value);
+        var num3 = Number(document.getElementById("metricNoWeightG").value);
+        var sum = ((num1 * num2) / num3) * 100;
+        document.getElementById("resultMetricNoMetresPerKilo").value =
+          Math.round(sum);
+        document.getElementById(
+          "resultMetricNoMetresPerKiloDiv"
+        ).style.display = "block";
+      }
+
+      function calculateMetricNo100() {
+        var num1MetricNo100g = Number(
+          document.getElementById("metricNoSkeinLengthCm").value
+        );
+        var num2MetricNo100g = Number(
+          document.getElementById("metricNoNumberWraps").value
+        );
+        var num3MetricNo100g = Number(
+          document.getElementById("metricNoWeightG").value
+        );
+        var sumMetricNo100g =
+          (num1MetricNo100g * num2MetricNo100g) / num3MetricNo100g;
+        document.getElementById("resultMetricNoMetresPer100g").value =
+          Math.round(sumMetricNo100g);
+        document.getElementById(
+          "resultMetricNoMetresPer100gDiv"
+        ).style.display = "block";
+      }
+
+      // Imperial functions
+
+      // Imperial button functions
+      function imperialFunction() {
+        document.getElementById("imperialMainDiv").style.display = "block";
+        document.getElementById("metricMainDiv").style.display = "none";
+        document.getElementById("mixedMainDiv").style.display = "none";
+        document.getElementById("imperial").style.border = "2px inset #969DB0";
+        document.getElementById("metric").style.border ="none";
+        document.getElementById("mixed").style.border ="none";
+      }
+
+      function imperialYesSkeinLengthButtonFunction() {
+        document.getElementById("imperialYesSkeinLengthDiv").style.display =
+          "block";
+        document.getElementById(
+          "imperialNoSkeinLengthInchesDiv"
+        ).style.display = "none";
+        document.getElementById("imperialYesSkeinLengthButton").style.border = "2px inset #969DB0";
+        document.getElementById("imperialNoSkeinLengthButton").style.border ="none";
+      }
+
+      function imperialNoSkeinLengthButtonFunction() {
+        document.getElementById(
+          "imperialNoSkeinLengthInchesDiv"
+        ).style.display = "block";
+        document.getElementById("imperialYesSkeinLengthDiv").style.display =
+          "none";
+        document.getElementById("imperialNoSkeinLengthButton").style.border = "2px inset #969DB0";
+        document.getElementById("imperialYesSkeinLengthButton").style.border ="none";
+      }
+
+      // Imperial Yes Functions
+      function calculateImperialYes() {
+        var num1ImperialYes = Number(
+          document.getElementById("totalSkeinLengthYards").value
+        );
+        var num2ImperialYes = Number(
+          document.getElementById("yesWeightOunces").value
+        );
+        var sumImperialYes = (num1ImperialYes / num2ImperialYes) * 16;
+        document.getElementById("resultImperialYesYardsPerPound").value =
+          Math.round(sumImperialYes);
+      }
+
+      function calculateImperialYesOunces() {
+        var num1ImperialYesPerOunce = Number(
+          document.getElementById("totalSkeinLengthYards").value
+        );
+        var num2ImperialYesPerOunce = Number(
+          document.getElementById("yesWeightOunces").value
+        );
+        var sumImperialYesPerOunce =
+          num1ImperialYesPerOunce / num2ImperialYesPerOunce;
+        document.getElementById("resultImperialYesYardsPerOunce").value =
+          Math.round(sumImperialYesPerOunce);
+      }
+
+      function resultImperialYesYardsPerOunceDiv() {
+        document.getElementById(
+          "resultImperialYesYardsPerOunceDiv"
+        ).style.display = "block";
+      }
+
+      function resultImperialYesYardsPerPoundDiv() {
+        document.getElementById(
+          "resultImperialYesYardsPerPoundDiv"
+        ).style.display = "block";
+      }
+
+      function imperialYesReset() {
+        document.getElementById("totalSkeinLengthYards").value = "0";
+        document.getElementById("yesWeightOunces").value = "0";
+        document.getElementById("resultImperialYesYardsPerPound").value = "0";
+        document.getElementById("resultImperialYesYardsPerOunce").value = "0";
+        document.getElementById(
+          "resultImperialYesYardsPerOunceDiv"
+        ).style.display = "none";
+        document.getElementById(
+          "resultImperialYesYardsPerPoundDiv"
+        ).style.display = "none";
+      }
+
+      //Imperial No Functions
+  
+      function calculateImperialNoTotalSkeinLength() {
+        var num1 = Number(
+          document.getElementById("imperialNoSkeinLengthInches").value
+        );
+        var num2 = Number(
+          document.getElementById("imperialNoNumberWraps").value
+        );
+        var sum = (num1 * num2)/36;
+        document.getElementById("resultImperialNoTotalSkeinLength").value =
+          Math.round(sum);
+        document.getElementById(
+          "resultImperialNoTotalSkeinLengthDiv"
+        ).style.display = "block";
+      }
+
+      // Works
+      function calculateImperialNo() {
+        var num1ImperialNo = Number(
+          document.getElementById("imperialNoSkeinLengthInches").value
+        );
+        var num2ImperialNo = Number(
+          document.getElementById("imperialNoNumberWraps").value
+        );
+        var num3ImperialNo = Number(
+          document.getElementById("imperialNoWeightOunces").value
+        );
+        var sumImperialNo =
+          (((num1ImperialNo * num2ImperialNo) / 36)/num3ImperialNo) * 16;
+        console.log(sumImperialNo);
+
+        document.getElementById("resultImperialNoYardsPerPound").value =
+          Math.round(sumImperialNo);
+        document.getElementById(
+          "resultImperialNoYardsPerPoundDiv"
+        ).style.display = "block";
+      }
+      // Works
+      function calculateImperialNoYardsPerOunce() {
+        var num1ImperialNoYardsPerOunce = Number(
+          document.getElementById("imperialNoSkeinLengthInches").value
+        );
+        var num2ImperialNoYardsPerOunce = Number(
+          document.getElementById("imperialNoNumberWraps").value
+        );
+        var num3ImperialNoYardsPerOunce = Number(
+          document.getElementById("imperialNoWeightOunces").value
+        );
+        var sumImperialNoYardsPerOunce =
+          ((num1ImperialNoYardsPerOunce * num2ImperialNoYardsPerOunce)/36) /
+          num3ImperialNoYardsPerOunce;
+        document.getElementById("resultImperialNoYardsPerOunce").value =
+          Math.round(sumImperialNoYardsPerOunce);
+        document.getElementById(
+          "resultImperialNoYardsPerOunceDiv"
+        ).style.display = "block";
+      }
+      // works
+      function imperialNoReset() {
+        document.getElementById("imperialNoSkeinLengthInches").value = "0";
+        document.getElementById("imperialNoNumberWraps").value = "0";
+        document.getElementById("imperialNoWeightOunces").value = "0";
+        document.getElementById("resultImperialNoTotalSkeinLength").value = "0";
+        document.getElementById("resultImperialNoYardsPerPound").value = "0";
+        document.getElementById(
+          "resultImperialNoYardsPerOunceDiv"
+        ).style.display = "none";
+        document.getElementById(
+          "resultImperialNoYardsPerPoundDiv"
+        ).style.display = "none";
+        document.getElementById(
+          "resultImperialNoTotalSkeinLengthDiv"
+        ).style.display = "none";
+      }
+
+      // Mixed functions
+
+      // Mixed button functions
+      function mixedFunction() {
+        document.getElementById("mixedMainDiv").style.display = "block";
+        document.getElementById("metricMainDiv").style.display = "none";
+        document.getElementById("imperialMainDiv").style.display = "none";
+        document.getElementById("mixed").style.border = "2px inset #969DB0";
+        document.getElementById("metric").style.border ="none";
+        document.getElementById("imperial").style.border ="none";
+      }
+
+      function mixedYesSkeinLengthButtonFunction() {
+        document.getElementById("mixedYesSkeinLengthDiv").style.display =
+          "block";
+        document.getElementById(
+          "mixedNoSkeinLengthDiv"
+        ).style.display = "none";
+        document.getElementById("mixedYesSkeinLengthButton").style.border = "2px inset #969DB0";
+        document.getElementById("mixedNoSkeinLengthButton").style.border ="none";
+      }
+
+      function mixedNoSkeinLengthButtonFunction() {
+        document.getElementById(
+          "mixedNoSkeinLengthDiv"
+        ).style.display = "block";
+        document.getElementById("mixedYesSkeinLengthDiv").style.display =
+          "none";
+        document.getElementById("mixedNoSkeinLengthButton").style.border = "2px inset #969DB0";
+        document.getElementById("mixedYesSkeinLengthButton").style.border ="none";
+      }
+
+      // Mixed Yes Functions
+      // Works
+      function calculateMixedYes() {
+        var num1MixedYes = Number(
+          document.getElementById("mixedTotalSkeinLengthYards").value
+        );
+        var num2MixedYes = Number(
+          document.getElementById("mixedYesWeightGrams").value
+        );
+        var sumMixedYes = (num1MixedYes / num2MixedYes) * 453.592;
+        document.getElementById("resultMixedYesYardsPerPound").value =
+          Math.round(sumMixedYes);
+      }
+      //  Works 
+      function calculateMixedYesGrams() {
+        var num1MixedYesPerGrams = Number(
+          document.getElementById("mixedTotalSkeinLengthYards").value
+        );
+        var num2MixedYesPerGrams = Number(
+          document.getElementById("mixedYesWeightGrams").value
+        );
+        var sumMixedYesPerGrams =
+          (num1MixedYesPerGrams / num2MixedYesPerGrams)*100;
+        document.getElementById("resultMixedYesYardsPerGrams").value =
+          Math.round(sumMixedYesPerGrams);
+        
+      }
+      //Works
+      function calculateMixedYesYardsPerOunce() {
+        var num1MixedYesPerOunce = Number(
+          document.getElementById("mixedTotalSkeinLengthYards").value
+        );
+        var num2MixedYesPerOunce = Number(
+          document.getElementById("mixedYesWeightGrams").value
+        );
+        var sumMixedYesPerOunce = ((num1MixedYesPerOunce / num2MixedYesPerOunce) * 453.592)/16;
+        document.getElementById("resultMixedYesYardsPerOunce").value =
+          Math.round(sumMixedYesPerOunce);
+        document.getElementById("resultMixedYesYardsPerOunce").style.display = "block";
+      }
+
+      function resultMixedYesYardsPerOunceDiv() {
+        document.getElementById(
+          "resultMixedYesYardsPerOunceDiv"
+        ).style.display = "block";
+      }
+
+      function resultMixedYesYardsPerPoundDiv() {
+        document.getElementById(
+          "resultMixedYesYardsPerPoundDiv"
+        ).style.display = "block";
+      }
+
+      function resultMixedYesYardsPerGramsDiv() {
+        document.getElementById(
+          "resultMixedYesYardsPerGramsDiv"
+        ).style.display = "block";
+      }
+
+
+      function mixedYesReset() {
+        document.getElementById("mixedTotalSkeinLengthYards").value = "0";
+        document.getElementById("mixedYesWeightGrams").value = "0";
+        document.getElementById("resultMixedYesYardsPerPound").value = "0";
+        document.getElementById("resultMixedYesYardsPerOunce").value = "0";
+        document.getElementById("resultMixedYesYardsPerGrams").value = "0";
+        document.getElementById(
+          "resultMixedYesYardsPerOunceDiv"
+        ).style.display = "none";
+        document.getElementById(
+          "resultMixedYesYardsPerPoundDiv"
+        ).style.display = "none";
+           document.getElementById(
+          "resultMixedYesYardsPerGramsDiv"
+        ).style.display = "none";
+      }
+
+      //Mixed No Functions
+  
+      function calculateMixedNoTotalSkeinLength() {
+        var num1 = Number(
+          document.getElementById("mixedNoSkeinLengthInches").value
+        );
+        var num2 = Number(
+          document.getElementById("mixedNoNumberWraps").value
+        );
+        var sum = num1 * num2;
+        document.getElementById("resultMixedNoTotalSkeinLength").value =
+          Math.round(sum);
+        document.getElementById(
+          "resultMixedNoTotalSkeinLengthDiv"
+        ).style.display = "block";
+      }
+
+      
+      function calculateMixedNo() {
+        var num1MixedNo = Number(
+          document.getElementById("mixedNoSkeinLengthInches").value
+        );
+        var num2MixedNo = Number(
+          document.getElementById("mixedNoNumberWraps").value
+        );
+        var num3MixedNo = Number(
+          document.getElementById("mixedNoWeightGrams").value
+        );
+        var sumMixedNo =
+          ((num1MixedNo * num2MixedNo) / num3MixedNo) * 100;
+        console.log(sumMixedNo);
+
+        document.getElementById("resultMixedNoYardsPerPound").value =
+          Math.round(sumMixedNo);
+        document.getElementById(
+          "resultMixedNoYardsPerPoundDiv"
+        ).style.display = "block";
+      }
+      
+      function calculateMixedNoYardsPerOunce() {
+        var num1MixedNoYardsPerOunce = Number(
+          document.getElementById("mixedNoSkeinLengthInches").value
+        );
+        var num2MixedNoYardsPerOunce = Number(
+          document.getElementById("mixedNoNumberWraps").value
+        );
+        var num3MixedNoYardsPerOunce = Number(
+          document.getElementById("mixedNoWeightGrams").value
+        );
+        var sumMixedNoYardsPerOunce =
+          (num1MixedNoYardsPerOunce * num2MixedNoYardsPerOunce) /
+          num3MixedNoYardsPerOunce;
+        document.getElementById("resultMixedNoYardsPerOunce").value =
+          Math.round(sumMixedNoYardsPerOunce);
+        document.getElementById(
+          "resultMixedNoYardsPerOunceDiv"
+        ).style.display = "block";
+      }
+      // works
+      function mixedNoReset() {
+        document.getElementById("mixedNoSkeinLengthInches").value = "0";
+        document.getElementById("mixedNoNumberWraps").value = "0";
+        document.getElementById("mixedNoWeightGrams").value = "0";
+        document.getElementById("resultMixedNoTotalSkeinLength").value = "0";
+        document.getElementById("resultMixedNoYardsPerPound").value = "0";
+        document.getElementById(
+          "resultMixedNoYardsPerOunceDiv"
+        ).style.display = "none";
+        document.getElementById(
+          "resultMixedNoYardsPerPoundDiv"
+        ).style.display = "none";
+        document.getElementById(
+          "resultMixedNoTotalSkeinLengthDiv"
+        ).style.display = "none";
+      }
+
+    </script>
+  </body>
+</html>
